@@ -1,0 +1,1030 @@
+/* Chapter3 - 第三单元 */
+.chapter3 {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #E2D2B8 !important;
+  --color-text: #1a1a1a;
+  --color-text-muted: #4a4040;
+  color: #1a1a1a !important;
+}
+
+/* 开场场景 */
+.openingScene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 左上角标题 */
+.titleSection {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.chapterTitle {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--color-text, #1a1a1a);
+  letter-spacing: 0.15em;
+  margin: 0;
+  text-shadow: 2px 2px 8px rgba(226, 210, 184, 0.5);
+}
+
+/* 河流效果容器 */
+.riverContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* SVG河流路径 */
+.riverPath {
+  fill: none;
+  stroke: url(#riverGradient);
+  stroke-width: 40;
+  stroke-linecap: round;
+  stroke-dasharray: 3000;
+  stroke-dashoffset: 3000;
+  filter: drop-shadow(0 0 20px rgba(100, 149, 237, 0.3));
+}
+
+/* 河流动画 - 随滚动从右上流向左下 */
+.riverPath.animated {
+  animation: flowRiver 4s ease-out forwards;
+}
+
+@keyframes flowRiver {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 河流粒子效果 */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(100, 149, 237, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 河流中的装饰线条 */
+.decorationLine {
+  position: absolute;
+  background: rgba(100, 149, 237, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* 右下角说明文本 */
+.descriptionSection {
+  position: absolute;
+  bottom: 8%;
+  right: 5%;
+  max-width: 500px;
+  z-index: 20;
+  pointer-events: none;
+  padding: 0;
+}
+
+.descriptionTitle {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.descriptionText {
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.03em;
+}
+
+/* 水波纹效果 */
+.waterRipple {
+  position: absolute;
+  border: 2px solid rgba(100, 149, 237, 0.3);
+  border-radius: 50%;
+  animation: ripple 3s ease-out infinite;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 山脉轮廓装饰 - 已移除 */
+
+/* 展项1 - 武周时期 */
+.exhibit1 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.exhibit1Inner {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.exhibit1Left {
+  flex: 1;
+  min-width: 0;
+}
+
+.exhibit1Right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit1Content {
+  padding: 2rem;
+}
+
+.exhibit1Title {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
+.exhibit1Text {
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.02em;
+}
+
+.exhibit1ImagePlaceholder {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  background: rgba(139, 119, 101, 0.2);
+  border: 2px dashed rgba(139, 119, 101, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit1ImageText {
+  font-size: 1.2rem;
+  color: rgba(26, 26, 26, 0.5);
+  letter-spacing: 0.1em;
+}
+
+.exhibit1Hotspot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  background-color: #DC2626;
+  border-radius: 50%;
+  border: 4px solid #FCA5A5;
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  animation: pulse 2s infinite;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.7;
+  }
+}
+
+/* 展项2 - 431窟 */
+.exhibit2 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+  z-index: 1;
+}
+
+.exhibit2Inner {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.exhibit2Left {
+  flex: 1;
+  min-width: 0;
+}
+
+.exhibit2Right {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit2Content {
+  padding: 2rem;
+}
+
+.exhibit2Title {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
+.exhibit2Text {
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.02em;
+}
+
+.exhibit2ImagePlaceholder {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  background: rgba(139, 119, 101, 0.2);
+  border: 2px dashed rgba(139, 119, 101, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit2ImageText {
+  font-size: 1.2rem;
+  color: rgba(26, 26, 26, 0.5);
+  letter-spacing: 0.1em;
+}
+
+/* 展项3 - 3D模型 */
+.exhibit3 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.exhibit3Content {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  gap: 4rem;
+  align-items: center;
+  height: 80vh;
+}
+
+.exhibit3Model {
+  flex: 1;
+  height: 80vh;
+  position: relative;
+  z-index: 1;
+}
+
+.exhibit3Model div {
+  position: relative;
+  z-index: 1;
+}
+
+.exhibit3Text {
+  flex: 0 0 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit3TextContent {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  text-align: justify;
+  text-indent: 2em;
+}
+
+/* 展项4 - 祥瑞 */
+.exhibit4 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.exhibit4Content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1600px;
+  gap: 2rem;
+  height: 80vh;
+}
+
+.exhibit4Top {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit4Bottom {
+  flex: 1;
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.exhibit4BottomLeft {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.exhibit4BottomLeft div {
+  position: relative;
+  z-index: 1;
+}
+
+.exhibit4BottomRight {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit4SectionPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(139, 119, 101, 0.2);
+  border: 2px dashed rgba(139, 119, 101, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit4SectionText {
+  font-size: 1.2rem;
+  color: rgba(26, 26, 26, 0.5);
+  letter-spacing: 0.1em;
+}
+
+.exhibit4TextContent {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exhibit4Text {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  text-align: justify;
+  text-indent: 2em;
+  margin: 0.5rem 0;
+}
+
+/* 展项5 - 217窟 */
+.exhibit5 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.exhibit5Content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1600px;
+  gap: 2rem;
+  height: 80vh;
+}
+
+.exhibit5TopText {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.exhibit5Title {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  letter-spacing: 0.1em;
+  margin: 0;
+  text-align: center;
+}
+
+.exhibit5Bottom {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit5Placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(139, 119, 101, 0.2);
+  border: 2px dashed rgba(139, 119, 101, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit5PlaceholderText {
+  font-size: 1.2rem;
+  color: rgba(26, 26, 26, 0.5);
+  letter-spacing: 0.1em;
+}
+
+/* 展项6 - 报恩君亲 - 滚动揭幕效果 */
+.exhibit6 {
+  position: relative;
+  width: 100%;
+  height: 200vh;
+  padding: 0;
+}
+
+.exhibit6ImageWrapper {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.exhibit6Image {
+  height: 150%;
+  width: auto;
+  object-fit: contain;
+}
+
+.exhibit6Overlay {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  background-color: #E2D2B8;
+}
+
+.exhibit6OverlayContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit6Title {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  letter-spacing: 0.2em;
+  margin: 0;
+  text-align: center;
+}
+
+.exhibit6TextContainer {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.exhibit6TextContent {
+  width: 25%;
+  max-width: 500px;
+  background-color: rgba(226, 210, 184, 0.9);
+  padding: 2.5rem;
+  border-radius: 8px;
+  pointer-events: auto;
+}
+
+.exhibit6TextContent {
+  width: 25%;
+  max-width: 500px;
+  background-color: rgba(226, 210, 184, 0.9);
+  padding: 2.5rem;
+  border-radius: 8px;
+}
+
+.exhibit6Text {
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  text-align: justify;
+  text-indent: 2em;
+  margin: 0 0 1.5rem 0;
+}
+
+.exhibit6Text:last-child {
+  margin-bottom: 0;
+}
+
+.exhibit6Hotspot {
+  position: absolute;
+  left: 25%;
+  bottom: 15%;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.exhibit6HotspotButton {
+  width: 48px;
+  height: 48px;
+  background-color: #DC2626;
+  border-radius: 50%;
+  border: 5px solid #FCA5A5;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  animation: hotspotPulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.exhibit6HotspotButton:hover {
+  transform: scale(1.2);
+}
+
+@keyframes hotspotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+/* 展项7 - 新展项 */
+.exhibit7 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin-top: 15vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+
+/* 左上角容器 */
+.exhibit7TopLeftContainer {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+}
+
+/* 交互点 */
+.exhibit7Hotspot {
+  position: relative;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.exhibit7HotspotButton {
+  width: 48px;
+  height: 48px;
+  background-color: #DC2626;
+  border-radius: 50%;
+  border: 5px solid #FCA5A5;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  animation: hotspotPulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.exhibit7HotspotButton:hover {
+  transform: scale(1.2);
+}
+
+@keyframes hotspotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+/* 文本占位符 */
+.exhibit7TextPlaceholder {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  color: var(--color-text-muted, #4a4040);
+  letter-spacing: 0.1em;
+  padding: 1rem 2rem;
+  background: rgba(139, 119, 101, 0.2);
+  border: 2px dashed rgba(139, 119, 101, 0.4);
+  border-radius: 8px;
+  min-width: 200px;
+}
+
+/* 中间图片容器 */
+.exhibit7ImagesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1400px;
+  flex-wrap: wrap;
+}
+
+.exhibit7ImagePlaceholder {
+  flex: 0 1 calc(20% - 1.2rem);
+  min-width: 150px;
+  height: 40vh;
+  background: rgba(139, 119, 101, 0.2);
+  border: 2px dashed rgba(139, 119, 101, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit7ImageText {
+  font-size: 1rem;
+  color: rgba(26, 26, 26, 0.5);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+/* 右下角交互点 */
+.exhibit7BottomRightHotspot {
+  position: absolute;
+  bottom: 8%;
+  right: 5%;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* 展项8 - 竖版文字 */
+.exhibit8 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E2D2B8;
+}
+
+.exhibit8VerticalText {
+  writing-mode: vertical-rl;
+  height: 60vh;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.exhibit8TextColumn {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  margin-left: 2.5rem;
+  letter-spacing: 0.3em;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  color: var(--color-text, #1a1a1a);
+}
+
+/* 展项9 - 阴处士碑 */
+.exhibit9 {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.exhibit9Inner {
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.exhibit9Left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit9Right {
+  flex: 1;
+  min-width: 0;
+}
+
+.exhibit9ImagePlaceholder {
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  background: rgba(139, 119, 101, 0.2);
+  border: 2px dashed rgba(139, 119, 101, 0.4);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibit9ImageText {
+  font-size: 1.2rem;
+  color: rgba(26, 26, 26, 0.5);
+  letter-spacing: 0.1em;
+}
+
+.exhibit9Content {
+  padding: 2rem;
+}
+
+.exhibit9Title {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+  letter-spacing: 0.1em;
+  margin-bottom: 2rem;
+}
+
+.exhibit9Text {
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 300;
+  line-height: 2;
+  letter-spacing: 0.02em;
+  text-align: justify;
+  text-indent: 2em;
+}
+
+/* 实际图片样式 */
+.exhibit9ActualImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* 包含实际图片的占位符 - 移除背景和边框 */
+.exhibit9WithImage {
+  background: transparent !important;
+  border: none !important;
+  position: relative;
+}
+
+/* 展项11 - 张议潮出行图 */
+.exhibit11 {
+  position: relative;
+  width: 100%;
+  height: 33.33vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+.exhibit11Image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* 展项11右侧交互点 */
+.exhibit11RightHotspot {
+  position: absolute;
+  right: 15%;
+  bottom: 15%;
+  width: 48px;
+  height: 48px;
+  background-color: #DC2626;
+  border-radius: 50%;
+  border: 5px solid #FCA5A5;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  animation: hotspotPulse 2s infinite;
+  transition: transform 0.3s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.exhibit11RightHotspot:hover {
+  transform: scale(1.2);
+}
+
+/* 展项13居中样式 */
+.exhibit13Content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5%;
+}
+
+/* 展项13交互点 - 图片上方中间偏左 */
+.exhibit13Hotspot {
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  width: 48px;
+  height: 48px;
+  background-color: #DC2626;
+  border-radius: 50%;
+  border: 5px solid #FCA5A5;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  animation: hotspotPulse 2s infinite;
+  transition: transform 0.3s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.exhibit13Hotspot:hover {
+  transform: scale(1.2);
+}
+
+/* 展项13居中样式 */
+.exhibit9Center {
+  flex: 0 0 100%;
+}
+
+/* 展项12左侧交互点 */
+.exhibit12Hotspot {
+  position: absolute;
+  left: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: #DC2626;
+  border-radius: 50%;
+  border: 5px solid #FCA5A5;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  animation: hotspotPulse 2s infinite;
+  transition: transform 0.3s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.exhibit12Hotspot:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* 展项12右侧交互点 */
+.exhibit12RightHotspot {
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: #DC2626;
+  border-radius: 50%;
+  border: 5px solid #FCA5A5;
+  box-shadow: 0 0 20px rgba(220, 38, 38, 0.8);
+  cursor: pointer;
+  animation: hotspotPulse 2s infinite;
+  transition: transform 0.3s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.exhibit12RightHotspot:hover {
+  transform: translateY(-50%) scale(1.2);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .titleSection {
+    top: 5%;
+    left: 5%;
+  }
+
+  .descriptionSection {
+    bottom: 5%;
+    right: 5%;
+    left: 5%;
+    max-width: none;
+    padding: 1.5rem;
+  }
+
+  .riverPath {
+    stroke-width: 25;
+  }
+
+  .exhibit7TopLeftContainer {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .exhibit7ImagesContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .exhibit7ImagePlaceholder {
+    flex: none;
+    width: 100%;
+    min-width: auto;
+    height: 25vh;
+  }
+}

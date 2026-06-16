@@ -1,0 +1,348 @@
+/* Chapter1 - 第一单元 */
+.chapter1 {
+  position: relative;
+  width: 100%;
+  background-color: #E2D2B8;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+  --color-text: #1a1a1a;
+  --color-text-muted: #4a4040;
+  --color-accent: #8b5e2a;
+  color: #1a1a1a;
+}
+
+/* Group 1 - Bodhisattva split layout */
+.g1Scene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: transparent;
+}
+
+.g1Img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 160vh;
+  width: auto;
+  will-change: transform, height;
+}
+
+.g1HotspotWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+}
+
+.g1Text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  padding: 0 6vw;
+  will-change: transform, opacity;
+}
+
+.g1Poem {
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+  color: #1a1a1a;
+  line-height: 2.2;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+.g1Def {
+  font-family: var(--font-body);
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: rgba(26, 26, 26, 0.65);
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+/* Group containers */
+.group {
+  position: relative;
+  width: 100%;
+}
+
+.groupHeader {
+  padding: var(--section-padding-y) var(--section-padding-x);
+  text-align: center;
+}
+
+.groupTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 400;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5em;
+}
+
+.groupSubtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: var(--color-text-muted);
+}
+
+/* Pinned scenes */
+.scene {
+  position: relative;
+}
+
+.sceneInner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dark overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Figure walking scene */
+.walkScene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.walkFigure {
+  position: absolute;
+  height: 80vh;
+  width: auto;
+}
+
+/* Merge scene - three images combining */
+.mergeScene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mergeImages {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mergeImage {
+  position: absolute;
+  width: 30%;
+  max-height: 70vh;
+}
+
+.mergeImage:nth-child(1) {
+  left: 5%;
+}
+.mergeImage:nth-child(2) {
+  left: 35%;
+}
+.mergeImage:nth-child(3) {
+  left: 65%;
+}
+
+/* Pinned scenes */
+.scene {
+  position: relative;
+}
+
+.twoPageScene {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: transparent;
+}
+
+.twoPageFigure {
+  position: relative;
+  height: 180vh;
+  width: auto;
+}
+
+/* Clouds decoration */
+.cloud {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  background: rgba(201, 169, 110, 0.08);
+  border-radius: 50%;
+  filter: blur(8px);
+  animation: cloudFloat 6s ease-in-out infinite;
+}
+
+.cloud:nth-child(1) {
+  bottom: 20%;
+  right: 15%;
+  animation-delay: 0s;
+}
+
+.cloud:nth-child(2) {
+  bottom: 35%;
+  left: 10%;
+  animation-delay: 2s;
+  width: 80px;
+  height: 40px;
+}
+
+@keyframes cloudFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-12px) translateX(6px); }
+}
+
+/* Dual layout */
+.dualLayout {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: var(--section-padding-x);
+  align-items: center;
+}
+
+.dualItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Group 3 - Inscriptions */
+.inscriptionSection {
+  padding: var(--section-padding-y) var(--section-padding-x) 30vh;
+  max-width: 900px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.vowText {
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.4vw, 1rem);
+  color: var(--color-text);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  direction: rtl;
+  line-height: 2;
+  margin: 0 0 2rem calc(-45vw + 50% + 90vw * 0.38);
+  padding: 0.5rem;
+  max-height: 70vh;
+  overflow: hidden;
+}
+
+.characterCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.characterCard {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.characterCard__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  padding: 1rem 1.2rem 0.3rem;
+}
+
+.characterCard__inscription {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  padding: 0 1.2rem 0.5rem;
+  font-style: italic;
+}
+
+.characterCard__desc {
+  font-size: 0.88rem;
+  color: var(--color-text);
+  line-height: 1.8;
+  padding: 0.5rem 1.2rem 1.2rem;
+}
+
+/* Hotspot pulse animation */
+.hotspot__pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: hotspotPulse 2s ease-in-out infinite;
+}
+
+.hotspot--active .hotspot__pulse {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes hotspotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Panel pinned variant */
+.pinnedPanel {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dualLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .mergeImage {
+    width: 60%;
+  }
+
+  .mergeImage:nth-child(1) { left: 10%; top: 10%; }
+  .mergeImage:nth-child(2) { left: 20%; top: 20%; }
+  .mergeImage:nth-child(3) { left: 30%; top: 30%; }
+
+  .walkFigure {
+    max-width: 70vw;
+  }
+
+  .characterCards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -45,7 +45,6 @@ const exhibits = {
 export default function Chapter3() {
   const openingSceneRef = useRef(null)
   const titleRef = useRef(null)
-  const riverPathRef = useRef(null)
   const descriptionRef = useRef(null)
   const exhibit1Ref = useRef(null)
   const exhibit1TextRef = useRef(null)
@@ -114,19 +113,6 @@ export default function Chapter3() {
           trigger: openingSceneRef.current,
           start: 'top 80%',
           end: 'top 60%',
-          scrub: 1,
-        },
-      })
-
-      // 河流动画 - 从右上流向左下
-      gsap.to(riverPathRef.current, {
-        strokeDashoffset: 0,
-        duration: 3,
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          trigger: openingSceneRef.current,
-          start: 'top 70%',
-          end: 'top 30%',
           scrub: 1,
         },
       })
@@ -658,41 +644,11 @@ export default function Chapter3() {
 
         {/* 河流效果 */}
         <div className={styles.riverContainer}>
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 1920 1080"
-            preserveAspectRatio="xMidYMid slice"
-          >
-            <defs>
-              <linearGradient id="riverGradient" x1="100%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="#6495ED" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#4169E1" stopOpacity="0.7" />
-                <stop offset="100%" stopColor="#87CEEB" stopOpacity="0.6" />
-              </linearGradient>
-            </defs>
-
-            {/* 主河流路径 - 从右上到左下 */}
-            <path
-              ref={riverPathRef}
-              d="M 1500 100 Q 1400 250, 1200 300 T 800 500 T 400 700 T 200 950"
-              className={styles.riverPath}
-            />
-
-            {/* 支流路径 */}
-            <path
-              d="M 1600 150 Q 1450 200, 1300 350 T 900 550 T 500 800"
-              fill="none"
-              stroke="url(#riverGradient)"
-              strokeWidth="20"
-              strokeLinecap="round"
-              strokeDasharray="2000"
-              strokeDashoffset="2000"
-              style={{
-                animation: 'flowRiver 3.5s ease-out forwards 0.5s',
-              }}
-            />
-          </svg>
+          <img
+            src="/picture/chap3/河流.gif"
+            alt="河流"
+            className={styles.riverGif}
+          />
 
           {/* 粒子效果 */}
           {[...Array(30)].map((_, i) => (
@@ -1016,11 +972,28 @@ export default function Chapter3() {
       {/* 展项11 - 张议潮出行图 */}
       <div ref={exhibit11Ref} className={styles.exhibit11}>
         <div className={`${styles.exhibit9ImagePlaceholder} ${styles.exhibit9WithImage}`}>
-          <img
-            src="/picture/chap3/张议潮出行图（抠图）.png"
-            alt="张议潮出行图"
-            className={styles.exhibit11Image}
-          />
+          <div className={styles.exhibit11Images}>
+            <img
+              src="/picture/chap3/张议潮统军出行图右往左1.gif"
+              alt="张议潮出行图1"
+              className={styles.exhibit11Image}
+            />
+            <img
+              src="/picture/chap3/张议潮统军出行图右往左2.gif"
+              alt="张议潮出行图2"
+              className={styles.exhibit11Image}
+            />
+            <img
+              src="/picture/chap3/张议潮统军出行图右往左3.gif"
+              alt="张议潮出行图3"
+              className={styles.exhibit11Image}
+            />
+            <img
+              src="/picture/chap3/张议潮统军出行图右往左4.gif"
+              alt="张议潮出行图4"
+              className={styles.exhibit11Image}
+            />
+          </div>
           <Hotspot
             ref={exhibit11RightHotspotRef}
             x={85}
@@ -1146,12 +1119,6 @@ export default function Chapter3() {
           50% {
             transform: translate(-30px, 20px);
             opacity: 0.8;
-          }
-        }
-
-        @keyframes flowRiver {
-          to {
-            stroke-dashoffset: 0;
           }
         }
       `}</style>

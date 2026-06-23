@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Hotspot from '../components/Hotspot'
 import styles from './Chapter4.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -435,14 +436,12 @@ export default function Chapter4() {
             {/* 横向问号文本 */}
             <div ref={questionTextRef} className={styles.questionText}>
               有什么？
-              <span
-                className={styles.interactionDot}
+              <Hotspot
+                inline
+                active={showTreasures}
                 onClick={handleQuestionClick}
-                role="button"
-                tabIndex={0}
-              >
-                <span className={styles.dotPulse}></span>
-              </span>
+                className={styles.questionHotspot}
+              />
             </div>
 
             {/* 宝藏列表（点击后显示） */}

@@ -77,35 +77,37 @@
   position: relative;
   z-index: 15;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
+  gap: clamp(2rem, 4vw, 5rem);
   width: 100%;
   margin-top: 4rem;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
 }
 
 .openingPageImage {
-  width: 1235.39px;
+  width: clamp(360px, 48vw, 900px);
   max-width: 100%;
   height: auto;
   object-fit: contain;
   display: block;
+  flex-shrink: 0;
   filter: drop-shadow(0 15px 40px rgba(26, 26, 26, 0.06));
 }
 
 /* 展品组信息容器 */
 .exhibitInfoContainer {
-  position: absolute;
-  right: 6%;
-  top: 8%;
-  width: 26%;
+  position: relative;
+  width: clamp(280px, 32vw, 440px);
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.8rem;
 }
 
 .exhibitTitle {
   font-family: var(--font-display, 'Noto Serif SC', serif);
-  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
   font-weight: 600;
   color: var(--color-text, #1a1a1a);
   letter-spacing: 0.12em;
@@ -115,7 +117,7 @@
 }
 
 .exhibitDescription {
-  font-size: 31.6px;
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
   color: var(--color-text-muted, #4a4040);
   font-weight: 400;
   line-height: 2;
@@ -127,6 +129,7 @@
 /* 新增展项页面 */
 .newExhibitPage {
   position: relative;
+  z-index: 30;
   width: 100%;
   min-height: 120vh;
   display: flex;
@@ -134,7 +137,7 @@
   align-items: center;
   padding: 4rem 2rem;
   margin-bottom: 5rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* 左侧图片容器 */
@@ -214,53 +217,9 @@
   align-items: center;
 }
 
-/* 交互点 */
-.interactionDot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
+/* 交互点（与全站 Hotspot 圆点统一形式，样式由 Hotspot 组件提供） */
+.questionHotspot {
   margin-left: 1.5rem;
-  cursor: pointer;
-  user-select: none;
-  position: relative;
-  transition: all 0.5s cubic-bezier(0.32, 0.72, 0, 1);
-}
-
-.interactionDot::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #c9a227, #d4af37);
-  border-radius: 50%;
-  animation: pulse 2.5s cubic-bezier(0.32, 0.72, 0, 1) infinite;
-}
-
-.dotPulse {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, #c9a227, transparent);
-  border-radius: 50%;
-  opacity: 0;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.9;
-  }
-  50% {
-    transform: scale(1.4);
-    opacity: 0.5;
-  }
-}
-
-.interactionDot:hover::before {
-  transform: scale(1.25);
-  box-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
 }
 
 /* 宝藏列表 */
@@ -804,15 +763,21 @@
     max-width: 85%;
   }
 
+  .openingPageContainer {
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 0 2rem;
+  }
+
   .exhibitInfoContainer {
     position: static;
     width: 100%;
     max-width: 90%;
-    margin: 3rem auto 0 auto;
+    margin: 0 auto;
   }
 
   .openingPageImage {
-    width: 100%;
+    width: min(60%, 360px);
   }
 }
 
@@ -960,9 +925,7 @@
     font-size: 0.95rem;
   }
 
-  .interactionDot {
-    width: 24px;
-    height: 24px;
+  .questionHotspot {
     margin-left: 1rem;
   }
 

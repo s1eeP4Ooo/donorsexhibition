@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Hero, Prologue, Chapter1, Chapter2, Chapter3, Chapter4, Epilogue } from './sections'
 import Navbar from './components/Navbar'
+import Preloader from './components/Preloader'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,8 +14,10 @@ function Divider() {
 
 export default function App() {
   const [showNavbar, setShowNavbar] = useState(false)
-  // 是否已通过“进入展览”按钮进入展览。未进入前锁定滚动，仅显示首页。
+  // 是否已通过”进入展览”按钮进入展览。未进入前锁定滚动，仅显示首页。
   const [entered, setEntered] = useState(false)
+  // 资源是否加载完毕
+  const [loaded, setLoaded] = useState(false)
 
   // 确保页面加载时滚动到顶部
   useEffect(() => {
@@ -27,11 +30,11 @@ export default function App() {
     return () => clearTimeout(timer)
   }, [])
 
-  // 在未进入展览前锁定滚动，保证首页是用户第一个看到且唯一可见的内容
+  // 在未加载完毕或未进入展览前锁定滚动
   useLayoutEffect(() => {
     const html = document.documentElement
     const body = document.body
-    if (!entered) {
+    if (!loaded || !entered) {
       html.style.overflow = 'hidden'
       body.style.overflow = 'hidden'
       body.style.height = '100vh'
@@ -45,7 +48,7 @@ export default function App() {
       body.style.overflow = ''
       body.style.height = ''
     }
-  }, [entered])
+  }, [loaded, entered])
 
   const handleEnter = useCallback(() => {
     // 解锁滚动
@@ -108,6 +111,7 @@ export default function App() {
 
   return (
     <>
+      {!loaded && <Preloader onComplete={() => setLoaded(true)} />}
       {showNavbar && <Navbar />}
       <main className="exhibition">
         <Hero onEnter={handleEnter} />

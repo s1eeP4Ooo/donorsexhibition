@@ -19,6 +19,7 @@ export default function ExhibitPanel({
   title,
   subtitle,
   description,
+  images,
   image,
   imagePosition = 'left',
   visible,
@@ -101,6 +102,16 @@ export default function ExhibitPanel({
           {(title || subtitle) && <span className={styles.divider} />}
           {description && (
             <p className={styles.description}>{description}</p>
+          )}
+          {images && images.length > 0 && (
+            <div className={styles.imagesRow}>
+              {images.map((img, i) => (
+                <div key={i} className={styles.imageCell}>
+                  <img src={img.src} alt={`${title || '展品'} ${i + 1}`} className={styles.textImage} />
+                  {img.caption && <span className={styles.imageCaption}>{img.caption}</span>}
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </aside>

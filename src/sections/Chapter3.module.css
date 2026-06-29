@@ -923,6 +923,14 @@
   margin: 0;
 }
 
+.exhibit7Source {
+  display: block;
+  font-size: clamp(0.6rem, 0.8vw, 0.72rem);
+  color: var(--color-text-muted, #4a4040);
+  margin-top: 0.5em;
+  line-height: 1.6;
+}
+
 /* 中间图片容器 */
 .exhibit7ImagesContainer {
   display: flex;

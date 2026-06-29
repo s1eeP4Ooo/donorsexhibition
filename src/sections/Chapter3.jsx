@@ -18,7 +18,11 @@ const exhibits = {
   cave431: {
     title: '第431窟南壁壁画',
     subtitle: '初唐 莫高窟第431窟',
-    description: '431窟是阴氏家族在前人基础上在唐代重修的洞窟，其将洞窟地面下挖，在中心塔柱柱座以及洞窟四壁绘制了壁画。南壁绘有"九品往生"，其中下三品画面生动表现了善导大师的净土思想与凡夫论。这建立了敦煌最早往生西方净土的道场，充分彰显出阴氏家族敏锐的宗教审美与艺术认知。',
+    description: '受第431窟影响，盛唐时的第172窟出现了洞窟南北两壁均画观经变的现象，学者认为此窟是进行"净土"礼忏的场所。\n（图源：韩卫盟、范丽娟崔强《敦煌莫高窟第172窟“研究性复原临摹”研究》）',
+    images: [
+      { src: '/picture/chap3/431影响1.jpg', caption: '（172窟南壁）' },
+      { src: '/picture/chap3/431影响2.jpg', caption: '（172窟北壁）' },
+    ],
   },
   baoEnJunQin: {
     title: '中唐 第231窟 报恩君亲供养人',
@@ -808,6 +812,7 @@ export default function Chapter3() {
           title={exhibits.cave431.title}
           subtitle={exhibits.cave431.subtitle}
           description={exhibits.cave431.description}
+          images={exhibits.cave431.images}
           visible={activePanel === 'cave431'}
           onClose={() => setActivePanel(null)}
         />
@@ -1039,7 +1044,8 @@ export default function Chapter3() {
         {/* 左上角文本 */}
         <div className={styles.exhibit7TopLeftContainer}>
           <p className={styles.exhibit7TopLeftText}>
-            吐蕃仿唐制建立"告身"制度，以不同材质区分官员等级。这些金属牌饰穿缀于服饰之上，是显示身份地位的标志性物品。阴氏家族中出任蕃朝官职者，当拥有此类告身。
+            吐蕃仿唐制建立”告身”制度，以不同材质区分官员等级。这些金属牌饰穿缀于服饰之上，是显示身份地位的标志性物品。阴氏家族中出任蕃朝官职者，当拥有此类告身。
+            <span className={styles.exhibit7Source}>（霍巍《吐蕃”告身制度”的考古学新印证》；图源：霍巍《吐蕃“告身制度”的考古学新印证》）</span>
           </p>
         </div>
 
@@ -1062,8 +1068,6 @@ export default function Chapter3() {
           ))}
         </div>
 
-        {/* 右下角交互点 */}
-        <Hotspot ref={exhibit7BottomRightHotspotRef} x={95} y={92} />
       </div>
 
       {/* 展项8 - 竖版文字 */}
@@ -1130,22 +1134,22 @@ export default function Chapter3() {
         <div className={`${styles.exhibit9ImagePlaceholder} ${styles.exhibit9WithImage}`}>
           <div className={styles.exhibit11Images}>
             <img
-              src="/picture/chap3/张议潮统军出行图右往左1.gif"
+              src="/picture/chap3/张议潮统军出行图右往左4.gif"
               alt="张议潮出行图1"
               className={styles.exhibit11Image}
             />
             <img
-              src="/picture/chap3/张议潮统军出行图右往左2.gif"
+              src="/picture/chap3/张议潮统军出行图右往左3.gif"
               alt="张议潮出行图2"
               className={styles.exhibit11Image}
             />
             <img
-              src="/picture/chap3/张议潮统军出行图右往左3.gif"
+              src="/picture/chap3/张议潮统军出行图右往左2.gif"
               alt="张议潮出行图3"
               className={styles.exhibit11Image}
             />
             <img
-              src="/picture/chap3/张议潮统军出行图右往左4.gif"
+              src="/picture/chap3/张议潮统军出行图右往左1.gif"
               alt="张议潮出行图4"
               className={styles.exhibit11Image}
             />

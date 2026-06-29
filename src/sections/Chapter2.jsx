@@ -40,13 +40,12 @@ export default function Chapter2() {
   const marriageFamilyCards = ['曹氏归义军联姻家族', '翟氏', '张氏', '罗氏', '阴氏', '回鹘', '索氏', '于阗', '宋氏']
   const marriageFamilyImages = [
     { src: '/picture/chap2/武威郡夫人.png', alt: '武威郡夫人', title: '武威郡夫人',
-      cardSrc: '/picture/chap2/ai武威郡夫人.png',
-      desc: '五代曹氏归义军时期 第61窟 “故伯母武威郡夫人阴氏”供养像\n位于莫高窟第61窟右侧第一身。画像设于洞窟甬道右侧首列，榜题“故伯母武威郡夫人阴氏”。\n“武威郡” 为阴氏郡望标识，印证墓主出身敦煌阴氏望族。' },
+      cardSrc: '/picture/chap2/威武郡夫人像展品卡片.jpg',
+      desc: '五代曹氏归义军时期 第61窟 “故伯母武威郡夫人阴氏”供养像\n位于莫高窟第61窟东壁门北侧第八身，该画像右侧第一身，榜题“故伯母武威郡夫人阴氏”。\n“武威郡” 为阴氏郡望标识，印证墓主出身敦煌阴氏望族。' },
     { src: '/picture/chap2/61窟外甥小娘子阴氏一心供养 (2).png', alt: '61窟外甥小娘子阴氏一心供养', title: '外甥小娘子阴氏',
-      cardSrc: '/picture/chap2/61窟外甥小娘子阴氏一心供养.png',
-      desc: '五代曹氏归义军时期 第61窟 “外甥小娘子阴氏”供养像\n位于莫高窟第61窟右侧第一身。榜题“外甥小娘子阴氏”。\n“外甥”说明此阴氏为曹氏外戚，是曹氏宗室女子嫁入阴氏所生之女。依托曹阴联姻的家世得以入画，和同窟武威郡夫人阴氏互为补充，印证两家长期通婚结盟。' },
-    { src: '/picture/chap2/ai延萌.png', alt: 'ai延萌', title: '阴延萌', desc: '（说明文字待补充）' },
-    { src: '/picture/chap2/ai延胜.png', alt: 'ai延胜', title: '阴延胜', desc: '（说明文字待补充）' },
+      cardSrc: '/picture/chap2/外甥小娘子阴氏供养像.jpg',
+      desc: '五代曹氏归义军时期 第61窟 “外甥小娘子阴氏”供养像\n位于莫高窟61窟东壁门北侧第八身，该画像右侧第一身。\n“外甥”说明此阴氏为曹氏外戚，是曹氏宗室女子嫁入阴氏所生之女。依托曹阴联姻的家世得以入画，和同窟武威郡夫人阴氏互为补充，印证两家长期通婚结盟。' },
+    { src: '/picture/chap2/ai延萌.png', src2: '/picture/chap2/ai延胜.png', alt: '延萌与延胜', title: '延萌与延胜', desc: '五代曹氏归义军时期 第98窟 “出适阴氏”小娘子供养像 \n位于莫高窟第 98 窟。曹议金之女延萌、延胜供养画像，榜题题记标注 “出适阴氏”，意为两位曹氏千金嫁入阴家。这则壁画文字是五代沙州曹氏、阴氏两大望族缔结姻亲的直接实物佐证，印证了归义军时代豪门依靠联姻稳固势力、互通联盟的地方社会特征。', combined: true, cardSrc: '/picture/chap2/延萌延胜展品卡片.jpg' },
     { src: '/picture/chap2/阴子升.png', alt: '阴子升', title: '阴子升',
       cardSrc: '/picture/chap2/12、河西督僧统抠图版.png',
       desc: '五代曹氏归义军时期 P.3720 敦煌文书 《河西都僧统阴海晏墓志铭并序》\n志文载明阴海晏出任河西都僧统，是五代沙州佛教最高统领，总领河西僧团教务，为曹氏归义军倚重的佛门领袖。墓志与莫高窟98窟供养题记相互印证，完整记录阴氏祖孙两代接连与曹氏联姻：阴海晏一辈，曹议金将女儿延胜、延萌出嫁阴氏；阴海晏之孙阴子升迎娶曹议金第十三女，两代姻亲层层绑定。\n曹氏通过两代婚嫁笼络敦煌老牌望族阴氏，既以宗室女缔结世俗宗族盟约，又借阴海晏执掌僧权掌控全境佛教势力。' },
@@ -648,10 +647,25 @@ export default function Chapter2() {
           {activeFigure !== null && marriageFamilyImages[activeFigure] ? (
             <div className={styles.marriageDetailCard} role="dialog" aria-modal="true">
               <div className={styles.marriageDetailImage}>
-                <img
-                  src={marriageFamilyImages[activeFigure].cardSrc || marriageFamilyImages[activeFigure].src}
-                  alt={marriageFamilyImages[activeFigure].alt}
-                />
+                {marriageFamilyImages[activeFigure].cardSrc ? (
+                  <img
+                    src={marriageFamilyImages[activeFigure].cardSrc}
+                    alt={marriageFamilyImages[activeFigure].alt}
+                  />
+                ) : (
+                  <>
+                    <img
+                      src={marriageFamilyImages[activeFigure].src}
+                      alt={marriageFamilyImages[activeFigure].alt}
+                    />
+                    {marriageFamilyImages[activeFigure].src2 && (
+                      <img
+                        src={marriageFamilyImages[activeFigure].src2}
+                        alt={marriageFamilyImages[activeFigure].alt}
+                      />
+                    )}
+                  </>
+                )}
               </div>
               <div className={styles.marriageDetailText}>
                 <h4 className={styles.marriageDetailTitle}>
@@ -700,15 +714,22 @@ export default function Chapter2() {
             <div ref={marriageFamilyImageStageRef} className={styles.marriageFamilyImageStage}>
               <div className={styles.marriageFamilyImageGrid}>
                 {marriageFamilyImages.map((image, idx) => (
-                  <div key={image.src} className={styles.marriageFamilyImageCell}>
-                    <div className={styles.marriageFamilyImageWrap}>
+                  <div key={image.src} className={styles.marriageFamilyImageCell} style={image.combined ? { gridColumn: 'span 2' } : undefined}>
+                    <div className={styles.marriageFamilyImageWrap} style={image.combined ? { display: 'flex', gap: '1vw' } : undefined}>
                       <img
                         src={image.src}
                         alt={image.alt}
                         className={styles.marriageFamilyImage}
                       />
+                      {image.src2 && (
+                        <img
+                          src={image.src2}
+                          alt={image.alt}
+                          className={styles.marriageFamilyImage}
+                        />
+                      )}
                       <Hotspot
-                        x={14}
+                        x={image.combined ? 50 : 14}
                         y={14}
                         active={activeFigure === idx}
                         onClick={() => setActiveFigure(idx)}

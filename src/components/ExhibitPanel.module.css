@@ -116,6 +116,30 @@
   letter-spacing: 0.02em;
 }
 
+.imagesRow {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+.imageCell {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.textImage {
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+}
+.imageCaption {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: #9a9590;
+  margin-top: 0.5rem;
+  letter-spacing: 0.03em;
+}
+
 /* 关闭按钮 */
 .close {
   position: absolute;

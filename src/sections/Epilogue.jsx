@@ -1,15 +1,17 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useLayoutEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import styles from './Epilogue.module.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export default function Epilogue() {
+export default function Epilogue({ onUnlock }) {
   const sectionRef = useRef(null)
   const ruleRef = useRef(null)
   const paraRefs = useRef([])
   const closingRef = useRef(null)
+  const btnRef = useRef(null)
+  const [revealed, setRevealed] = useState(false)
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -36,10 +38,27 @@ export default function Epilogue() {
           ease: 'power3.out',
         }, i * 0.14)
       })
+
+      // 按钮淡入
+      if (btnRef.current) {
+        gsap.set(btnRef.current, { opacity: 0, y: 20 })
+        tl.to(btnRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: 'power3.out',
+        }, '-=0.2')
+      }
     }, sectionRef)
 
     return () => ctx.revert()
   }, [])
+
+  const handleClick = () => {
+    if (revealed) return
+    setRevealed(true)
+    onUnlock?.()
+  }
 
   const paragraphs = [
     '西夏兵锋东指，风云骤变，盛极一时的阴氏家族，悄然隐入历史尘烟。',
@@ -79,6 +98,17 @@ export default function Epilogue() {
           <span className={styles.closingDot}></span>
         </div>
       </div>
+
+      {!revealed && (
+        <button
+          ref={btnRef}
+          className={styles.unlockBtn}
+          onClick={handleClick}
+        >
+          点击了解更多
+          <span className={styles.unlockArrow} aria-hidden="true">›</span>
+        </button>
+      )}
     </section>
   )
 }

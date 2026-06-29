@@ -18,6 +18,8 @@ export default function App() {
   const [entered, setEntered] = useState(false)
   // 资源是否加载完毕
   const [loaded, setLoaded] = useState(false)
+  // 结语"点击了解更多"是否已点击，控制第四单元是否可访问
+  const [chapter4Unlocked, setChapter4Unlocked] = useState(false)
 
   // 确保页面加载时滚动到顶部
   useEffect(() => {
@@ -85,6 +87,21 @@ export default function App() {
     })
   }, [])
 
+  const handleChapter4Unlock = useCallback(() => {
+    setChapter4Unlocked(true)
+    // 等 Chapter4 渲染 + ScrollTrigger 刷新后，平滑滚动到第四单元
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh()
+        const ch4 = document.getElementById('chapter-4')
+        if (ch4) {
+          const targetY = ch4.getBoundingClientRect().top + window.scrollY
+          window.scrollTo({ top: targetY, behavior: 'smooth' })
+        }
+      })
+    })
+  }, [])
+
   useEffect(() => {
     const handleScroll = () => {
       const hero = document.getElementById('hero')
@@ -124,9 +141,13 @@ export default function App() {
             <Divider />
             <Chapter3 />
             <Divider />
-            <Chapter4 />
-            <Divider />
-            <Epilogue />
+            <Epilogue onUnlock={handleChapter4Unlock} />
+            {chapter4Unlocked && (
+              <>
+                <Divider />
+                <Chapter4 />
+              </>
+            )}
           </>
         )}
       </main>

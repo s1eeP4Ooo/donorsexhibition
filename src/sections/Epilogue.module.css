@@ -97,6 +97,45 @@
   box-shadow: 0 0 0 3px rgba(226, 210, 184, 1);
 }
 
+/* 解锁按钮 - 右下角 */
+.unlockBtn {
+  position: absolute;
+  bottom: clamp(2rem, 5vh, 4rem);
+  right: clamp(2rem, 4vw, 5rem);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.75em 1.6em;
+  font-family: var(--font-display, 'Noto Serif SC', serif);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #E2D2B8;
+  background: rgba(139, 90, 43, 0.85);
+  border: 1px solid rgba(201, 162, 39, 0.5);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 12px rgba(139, 90, 43, 0.25);
+}
+
+.unlockBtn:hover {
+  background: rgba(139, 90, 43, 1);
+  border-color: #c9a227;
+  box-shadow: 0 4px 20px rgba(201, 162, 39, 0.35);
+}
+
+.unlockArrow {
+  font-size: 1.3em;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+
+.unlockBtn:hover .unlockArrow {
+  transform: translateX(3px);
+}
+
 @media (max-width: 768px) {
   .inner {
     padding: 5rem 1.25rem;
@@ -109,5 +148,12 @@
   .body {
     font-size: clamp(1.05rem, 5vw, 1.4rem);
     line-height: 1.75;
+  }
+
+  .unlockBtn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-size: 0.9rem;
+    padding: 0.65em 1.2em;
   }
 }

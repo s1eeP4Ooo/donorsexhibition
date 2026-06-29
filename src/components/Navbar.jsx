@@ -7,8 +7,8 @@ const navItems = [
   { id: 'chapter-1', label: '第一单元' },
   { id: 'chapter-2', label: '第二单元' },
   { id: 'chapter-3', label: '第三单元' },
-  { id: 'chapter-4', label: '第四单元' },
   { id: 'epilogue', label: '结语' },
+  { id: 'chapter-4', label: '了解更多' },
 ]
 
 export default function Navbar() {

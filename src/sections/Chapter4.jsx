@@ -71,6 +71,8 @@ export default function Chapter4() {
     { year: '1984', text: '敦煌文物研究所扩建为敦煌研究院' },
     { year: '1999', text: '兰州大学敦煌学研究室扩建为敦煌学研究所' },
     { year: '如今', text: '敦煌的故事仍在继续……' },
+    { year: '点击跳转', text: '数字敦煌官网', link: 'https://www.e-dunhuang.com/index.htm' },
+    { year: '点击跳转', text: '敦煌研究院官网', link: 'https://www.dha.ac.cn/' },
   ]
 
   const getArtifactPosition = (index) => {
@@ -607,11 +609,22 @@ export default function Chapter4() {
             <div
               key={index}
               ref={el => timelineItemRefs.current[index] = el}
-              className={`${styles.timelineItem} ${event.year === '如今' ? styles.timelineItemFinal : ''}`}
+              className={`${styles.timelineItem} ${event.year === '如今' ? styles.timelineItemFinal : ''} ${event.link ? styles.timelineItemLink : ''}`}
             >
               <div className={styles.timelineContent}>
                 <span className={styles.timelineYear}>{event.year}</span>
-                <span className={styles.timelineText}>{event.text}</span>
+                {event.link ? (
+                  <a
+                    className={styles.timelineLink}
+                    href={event.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {event.text}
+                  </a>
+                ) : (
+                  <span className={styles.timelineText}>{event.text}</span>
+                )}
               </div>
               <div className={styles.timelineNode}>
                 <span className={styles.timelineNodeInner}></span>

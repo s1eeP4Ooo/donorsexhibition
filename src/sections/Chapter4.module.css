@@ -704,9 +704,8 @@
     0 2px 8px rgba(201, 162, 39, 0.35);
 }
 
-/* 末项“如今”特殊处理 */
+/* 末项”如今”特殊处理 */
 .timelineItemFinal .timelineYear {
-  color: #1a1a1a;
   font-style: italic;
 }
 
@@ -717,6 +716,34 @@
     0 0 0 5px rgba(26, 26, 26, 0.2),
     0 0 18px rgba(26, 26, 26, 0.25);
   animation: timelineFinalPulse 3s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+
+/* 链接节点 */
+.timelineItemLink .timelineYear {
+  font-style: italic;
+}
+
+.timelineLink {
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
+  color: var(--color-text-muted, #4a4040);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139, 90, 43, 0.4);
+  transition: color 0.25s, border-color 0.25s;
+  cursor: pointer;
+}
+
+.timelineLink:hover {
+  color: #8b5a2b;
+  border-color: #8b5a2b;
+}
+
+.timelineItemLink .timelineNodeInner {
+  background: radial-gradient(circle at 30% 30%, #c9a227, #8b5a2b);
+  box-shadow:
+    0 0 0 4px rgba(226, 210, 184, 1),
+    0 0 0 5px rgba(201, 162, 39, 0.3),
+    0 0 12px rgba(201, 162, 39, 0.3);
 }
 
 @keyframes timelineFinalPulse {

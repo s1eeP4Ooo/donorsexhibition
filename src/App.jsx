@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect, useCallback } from 'react'
+import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react'
 import './App.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -20,6 +20,8 @@ export default function App() {
   const [loaded, setLoaded] = useState(false)
   // 结语"点击了解更多"是否已点击，控制第四单元是否可访问
   const [chapter4Unlocked, setChapter4Unlocked] = useState(false)
+  const [musicPlaying, setMusicPlaying] = useState(false)
+  const audioRef = useRef(null)
 
   // 确保页面加载时滚动到顶部
   useEffect(() => {
@@ -52,9 +54,38 @@ export default function App() {
     }
   }, [loaded, entered])
 
+  const startMusic = useCallback(async () => {
+    const audio = audioRef.current
+    if (!audio) return
+
+    try {
+      audio.loop = true
+      audio.volume = 0.45
+      await audio.play()
+      setMusicPlaying(true)
+    } catch (error) {
+      setMusicPlaying(false)
+    }
+  }, [])
+
+  const stopMusic = useCallback(() => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.pause()
+    setMusicPlaying(false)
+  }, [])
+
+  const toggleMusic = useCallback(() => {
+    if (musicPlaying) {
+      stopMusic()
+    } else {
+      startMusic()
+    }
+  }, [musicPlaying, startMusic, stopMusic])
+
   const handleEnter = useCallback(() => {
-    // 解锁滚动
     setEntered(true)
+    startMusic()
     // 解锁后即时跳转到序章第一个页面（而非平滑滚动，避免过渡过程中触发圆盘动画）
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -85,7 +116,7 @@ export default function App() {
         }, 60)
       })
     })
-  }, [])
+  }, [startMusic])
 
   const handleChapter4Unlock = useCallback(() => {
     setChapter4Unlocked(true)
@@ -129,7 +160,8 @@ export default function App() {
   return (
     <>
       {!loaded && <Preloader onComplete={() => setLoaded(true)} />}
-      {showNavbar && <Navbar />}
+      {showNavbar && <Navbar musicPlaying={musicPlaying} onToggleMusic={toggleMusic} />}
+      <audio ref={audioRef} src="/M500001Cz5Is4VUwZx(1).mp3" preload="auto" />
       <main className="exhibition">
         <Hero onEnter={handleEnter} />
         <Prologue />

@@ -11,7 +11,7 @@ const navItems = [
   { id: 'chapter-4', label: '了解更多' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ musicPlaying, onToggleMusic }) {
   const [activeSection, setActiveSection] = useState('hero')
   const isNavigating = useRef(false)
 
@@ -91,6 +91,17 @@ export default function Navbar() {
           </li>
         ))}
       </ul>
+      <button
+        type="button"
+        className={`${styles.musicButton} ${musicPlaying ? styles.musicButtonOn : styles.musicButtonOff}`}
+        onClick={onToggleMusic}
+        aria-label={musicPlaying ? '关闭背景音乐' : '开启背景音乐'}
+        aria-pressed={musicPlaying}
+      >
+        <span className={styles.musicIcon} aria-hidden="true">
+          {musicPlaying ? '🔊' : '🔇'}
+        </span>
+      </button>
     </nav>
   )
 }
